@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test')
 
-test('First Test case', async function ({ browser }) {
+test('@fast First Test case', async function ({ browser }) {
     const context = await browser.newContext()
     const page = await context.newPage()
     await page.goto('https://www.webdriveruniversity.com/')
@@ -8,7 +8,7 @@ test('First Test case', async function ({ browser }) {
     await expect(page).toHaveTitle("WebDriverUniversity.com")
 })
 
-test('Second Test case', async function ({ page }) {
+test('@slow Second Test case', { tag: '@slow' }, async function ({ page }) {
     // const context = await browser.newContext()
     // const page = await context.newPage()
     await page.goto('https://google.com')

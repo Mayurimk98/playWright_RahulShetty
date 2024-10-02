@@ -37,7 +37,7 @@ test('TestCase 3 for invalid login textContent and assertion', async ({ page }) 
     await expect(errorMsg).toContainText('Invalid')
 })
 
-test('See multiple ele handling by using first(),last(),nth() method', async function ({ page }) {
+test('@slow See multiple ele handling by using first(),last(),nth() method', async function ({ page }) {
     await page.goto('https://www.toolsqa.com/')
     let eleText = await page.locator('div[class="category__name"]').first().textContent()
     console.log(eleText)

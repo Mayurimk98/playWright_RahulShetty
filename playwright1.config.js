@@ -21,23 +21,42 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  //reporter: 'html',
-  reporter:
-    [
-      ["line"],
-      ["allure-playwright"],
-    ],
+  reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+  // use: {
+  //   /* Base URL to use in actions like `await page.goto('/')`. */
+  //   // baseURL: 'http://127.0.0.1:3000',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'retain-on-failure',
-    browserName: 'chromium',
-    headless: false,
-    screenshot: 'on',
-  },
+  //   /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+  //   trace: 'retain-on-failure',
+  //   browserName: 'firefox',
+  //   headless: false,
+  //   screenshot:'on',
+  // },
+
+  projects: [
+    {
+      name: "Chrome",
+      use: {
+        trace: 'retain-on-failure',
+        browserName: 'chromium',
+        headless: false,
+        screenshot: 'on',
+        //viewport: { width: 800, height: 800 }
+        ...devices['Galaxy S9+']
+      },
+    },
+    {
+      name: "FireFox",
+      use: {
+        trace: 'retain-on-failure',
+        browserName: 'firefox',
+        headless: false,
+        screenshot: 'on',
+        //...devices['Galaxy S9+']
+      },
+    }
+  ]
 
   /* Configure projects for major browsers */
   // projects: [
